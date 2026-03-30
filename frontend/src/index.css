@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply border-slate-700; }
+  body { @apply bg-slate-950 text-slate-100 font-sans antialiased transition-colors duration-300; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-slate-900; }
+  ::-webkit-scrollbar-thumb { @apply bg-slate-600 rounded-full; }
+}
+
+@layer components {
+  .card {
+    @apply bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl transition-colors duration-300;
+  }
+  .card-glow {
+    @apply card transition-all duration-300 hover:border-primary/50 hover:shadow-primary/10 hover:shadow-2xl;
+  }
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 active:scale-95 shadow-lg shadow-primary/25;
+  }
+  .btn-secondary {
+    @apply bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium px-5 py-2.5 rounded-xl transition-all duration-200 active:scale-95;
+  }
+  .btn-danger {
+    @apply bg-red-600/20 hover:bg-red-600/30 text-red-400 font-medium px-4 py-2 rounded-xl transition-all duration-200;
+  }
+  .input {
+    @apply w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200;
+  }
+  .select {
+    @apply input cursor-pointer;
+  }
+  .label {
+    @apply block text-sm font-medium text-slate-400 mb-1.5;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+  .page-title {
+    @apply text-2xl font-bold text-white mb-1;
+  }
+  .stat-card {
+    @apply card flex flex-col gap-2;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-light to-accent bg-clip-text text-transparent;
+  }
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-all duration-200 font-medium;
+  }
+  .sidebar-link.active {
+    @apply text-white bg-primary/20 border border-primary/30 text-primary-light;
+  }
+  .progress-bar {
+    @apply h-2 rounded-full bg-slate-800 overflow-hidden;
+  }
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-700 ease-out;
+  }
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+  }
+  .modal {
+    @apply bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-md shadow-2xl animate-slide-up;
+  }
+  .table-header {
+    @apply text-xs font-semibold text-slate-500 uppercase tracking-wider;
+  }
+  .table-row {
+    @apply border-t border-slate-800 hover:bg-slate-800/50 transition-colors duration-150;
+  }
+  .avatar {
+    @apply rounded-full object-cover bg-slate-700 flex items-center justify-center;
+  }
+  .notification-dot {
+    @apply absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-[10px] flex items-center justify-center font-bold;
+  }
+}
+
+@layer utilities {
+  .glow-primary { box-shadow: 0 0 20px theme('colors.primary.DEFAULT' / 30%); }
+  .bg-mesh {
+    background-image: radial-gradient(at 40% 20%, hsla(252, 82%, 57%, 0.15) 0px, transparent 50%),
+                      radial-gradient(at 80% 0%, hsla(263, 70%, 50%, 0.1) 0px, transparent 50%),
+                      radial-gradient(at 0% 50%, hsla(252, 82%, 57%, 0.08) 0px, transparent 50%);
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT THEME — FIXED
+   ════════════════════════════════════════════════════════════ */
+
+.light body {
+  @apply bg-slate-50 text-slate-900;
+  background-image: radial-gradient(at 40% 20%, hsla(252, 82%, 57%, 0.05) 0px, transparent 50%),
+                    radial-gradient(at 80% 0%, hsla(263, 70%, 50%, 0.04) 0px, transparent 50%);
+}
+
+.light .card, .light .card-glow {
+  @apply bg-white border-slate-200 shadow-sm transition-colors duration-300;
+}
+
+.light .input, .light .select {
+  @apply bg-white border-slate-300 text-slate-900 placeholder-slate-400;
+}
+
+.light .sidebar-link {
+  @apply text-slate-600 hover:text-slate-900 hover:bg-slate-100;
+}
+
+.light .sidebar-link.active {
+  @apply text-primary bg-primary/10 border-primary/20;
+}
+
+.light .table-row {
+  @apply border-slate-200 hover:bg-slate-50;
+}
+
+.light .page-title {
+  @apply text-slate-900;
+}
+
+.light .modal {
+  @apply bg-white border-slate-200 shadow-2xl;
+}
+
+.light .label {
+  @apply text-slate-600;
+}
+
+.light .btn-secondary {
+  @apply bg-slate-200 hover:bg-slate-300 text-slate-700;
+}
+
+.light .progress-bar {
+  @apply bg-slate-200;
+}
+
+/* Generic slate text overrides for Light Mode */
+.light .text-white { color: #0f172a !important; }
+.light .text-slate-100 { color: #1e293b !important; }
+.light .text-slate-200 { color: #334155 !important; }
+.light .text-slate-300 { color: #475569 !important; }
+.light .text-slate-400 { color: #64748b !important; }
+.light .text-slate-500 { color: #94a3b8 !important; }
+
+/* Background Overrides */
+.light .bg-slate-900 { @apply bg-white border-slate-200 !important; }
+.light .bg-slate-800 { @apply bg-slate-100 border-slate-200 !important; }
+.light .border-slate-800 { @apply border-slate-200 !important; }
+.light .border-slate-700 { @apply border-slate-200 !important; }
+
+/* Handle mobile header and sidebar specially */
+.light aside { @apply bg-white border-slate-200 shadow-lg !important; }
+.light header { @apply bg-white/95 border-slate-200 shadow-sm !important; }
+
+/* Fix chart tooltips and other overlays */
+.light .bg-slate-800.border-slate-700 {
+  @apply bg-white border-slate-200 shadow-xl !important;
+}
+
+/* Specific component fixes */
+.light .divide-slate-800\/40 > * + * { border-color: #e2e8f0 !important; }
+.light .border-dashed.border-slate-800 { border-color: #cbd5e1 !important; }
