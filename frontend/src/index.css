@@ -5,7 +5,6 @@
 @tailwind utilities;
 
 @layer base {
-  * { @apply border-slate-700; }
   body { @apply bg-slate-950 text-slate-100 font-sans antialiased transition-colors duration-300; }
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { @apply bg-slate-900; }
@@ -92,55 +91,55 @@
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   LIGHT THEME — FIXED
-   ════════════════════════════════════════════════════════════ */
-
+/* LIGHT THEME OVERRIDES */
 .light body {
-  @apply bg-slate-50 text-slate-900;
+  background-color: #f8fafc;
+  color: #0f172a;
   background-image: radial-gradient(at 40% 20%, hsla(252, 82%, 57%, 0.05) 0px, transparent 50%),
                     radial-gradient(at 80% 0%, hsla(263, 70%, 50%, 0.04) 0px, transparent 50%);
 }
 
-.light .card, .light .card-glow {
-  @apply bg-white border-slate-200 shadow-sm transition-colors duration-300;
+.light .card, .light .card-glow { 
+  background-color: #ffffff; 
+  border-color: #e2e8f0; 
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
-.light .input, .light .select {
-  @apply bg-white border-slate-300 text-slate-900 placeholder-slate-400;
+.light .input, .light .select { 
+  background-color: #ffffff; 
+  border-color: #d1d5db; 
+  color: #0f172a; 
 }
 
-.light .sidebar-link {
-  @apply text-slate-600 hover:text-slate-900 hover:bg-slate-100;
+.light .sidebar-link { 
+  color: #475569; 
 }
 
-.light .sidebar-link.active {
-  @apply text-primary bg-primary/10 border-primary/20;
+.light .sidebar-link:hover {
+  color: #0f172a;
+  background-color: #f1f5f9;
 }
 
-.light .table-row {
-  @apply border-slate-200 hover:bg-slate-50;
+.light .sidebar-link.active { 
+  color: #6366f1; 
+  background-color: rgba(99, 102, 241, 0.1); 
+  border-color: rgba(99, 102, 241, 0.2); 
 }
 
-.light .page-title {
-  @apply text-slate-900;
+.light .table-row { 
+  border-color: #e2e8f0; 
 }
 
-.light .modal {
-  @apply bg-white border-slate-200 shadow-2xl;
+.light .table-row:hover {
+  background-color: #f8fafc;
 }
 
-.light .label {
-  @apply text-slate-600;
-}
-
-.light .btn-secondary {
-  @apply bg-slate-200 hover:bg-slate-300 text-slate-700;
-}
-
-.light .progress-bar {
-  @apply bg-slate-200;
-}
+.light .page-title { color: #0f172a; }
+.light .modal { background-color: #ffffff; border-color: #e2e8f0; }
+.light .label { color: #475569; }
+.light .btn-secondary { background-color: #e2e8f0; color: #334155; }
+.light .btn-secondary:hover { background-color: #cbd5e1; }
+.light .progress-bar { background-color: #e2e8f0; }
 
 /* Generic slate text overrides for Light Mode */
 .light .text-white { color: #0f172a !important; }
@@ -151,19 +150,17 @@
 .light .text-slate-500 { color: #94a3b8 !important; }
 
 /* Background Overrides */
-.light .bg-slate-900 { @apply bg-white border-slate-200 !important; }
-.light .bg-slate-800 { @apply bg-slate-100 border-slate-200 !important; }
-.light .border-slate-800 { @apply border-slate-200 !important; }
-.light .border-slate-700 { @apply border-slate-200 !important; }
+.light .bg-slate-900 { background-color: #ffffff !important; border-color: #e2e8f0 !important; }
+.light .bg-slate-800 { background-color: #f1f5f9 !important; border-color: #e2e8f0 !important; }
+.light .border-slate-800 { border-color: #e2e8f0 !important; }
+.light .border-slate-700 { border-color: #e2e8f0 !important; }
 
 /* Handle mobile header and sidebar specially */
-.light aside { @apply bg-white border-slate-200 shadow-lg !important; }
-.light header { @apply bg-white/95 border-slate-200 shadow-sm !important; }
+.light aside { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1) !important; }
+.light header { background-color: rgba(255, 255, 255, 0.95) !important; border-color: #e2e8f0 !important; }
 
 /* Fix chart tooltips and other overlays */
-.light .bg-slate-800.border-slate-700 {
-  @apply bg-white border-slate-200 shadow-xl !important;
-}
+.light .bg-slate-800.border-slate-700 { background-color: #ffffff !important; border-color: #e2e8f0 !important; }
 
 /* Specific component fixes */
 .light .divide-slate-800\/40 > * + * { border-color: #e2e8f0 !important; }
