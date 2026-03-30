@@ -12,6 +12,19 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Handle 401 responses (e.g., expired or invalid token)
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem('ft_token');
+      localStorage.removeItem('ft_user');
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
+  }
+);
+
 // Auth
 export const authAPI = {
   register: (data) => api.post('/auth/register', data),

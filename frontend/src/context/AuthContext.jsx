@@ -12,8 +12,19 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('ft_token');
     const stored = localStorage.getItem('ft_user');
     if (token && stored) {
-      setUser(JSON.parse(stored));
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      try {
+        const parsedUser = JSON.parse(stored);
+        if (parsedUser && Object.keys(parsedUser).length > 0) {
+          setUser(parsedUser);
+          api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        } else {
+          throw new Error("Invalid user data");
+        }
+      } catch (err) {
+        localStorage.removeItem('ft_token');
+        localStorage.removeItem('ft_user');
+        setUser(null);
+      }
     }
     setLoading(false);
   }, []);
